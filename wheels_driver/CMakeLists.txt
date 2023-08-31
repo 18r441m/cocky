@@ -4,9 +4,12 @@ project(wheels_driver)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   cocky_msgs
+  tf 
 )
 
-catkin_package()
+catkin_package(
+  CATKIN_DEPENDS rospy cocky_msgs tf 
+)
 
 catkin_python_setup()
 

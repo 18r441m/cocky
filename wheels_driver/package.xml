@@ -14,9 +14,11 @@
     <build_depend>rospy</build_depend>
     <build_depend>cocky_msgs</build_depend>
     <build_depend>hat_driver</build_depend>
+    <build_depend>tf</build_depend> 
 
     <run_depend>rospy</run_depend>
     <run_depend>cocky_msgs</run_depend>
     <run_depend>hat_driver</run_depend>
+    <run_depend>tf</run_depend>
 
 </package>
