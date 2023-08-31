@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(hat_driver)
+project(duckiebot_interface)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy
-  adafruit_drivers
-  duckietown_msgs
+  # duckietown_msgs # Every duckietown packages should use this.
 )
+
 
 catkin_package()
 

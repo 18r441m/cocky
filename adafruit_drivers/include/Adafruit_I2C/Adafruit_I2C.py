@@ -2,58 +2,14 @@
 import re
 import smbus
 
-from dt_device_utils import get_device_hardware_brand, DeviceHardwareBrand
-
-ROBOT_HARDWARE = get_device_hardware_brand()
-
-
 # ===========================================================================
 # Adafruit_I2C Class
 # ===========================================================================
 
-
 class Adafruit_I2C(object):
-    @staticmethod
-    def getPiRevision():
-        """Gets the version number of the Raspberry Pi board"""
-        # Revision list available at: http://elinux.org/RPi_HardwareHistory#Board_Revision_History
-        try:
-            with open("/proc/cpuinfo", "r") as infile:
-                for line in infile:
-                    # Match a line of the form "Revision : 0002" while ignoring extra
-                    # info in front of the revsion (like 1000 when the Pi was over-volted).
-                    match = re.match("Revision\s+:\s+.*(\w{4})$", line)
-                    if match and match.group(1) in ["0000", "0002", "0003"]:
-                        # Return revision 1 if revision ends with 0000, 0002 or 0003.
-                        return 1
-                    elif match:
-                        # Assume revision 2 if revision ends with any other 4 chars.
-                        return 2
-                # Couldn't find the revision, assume revision 0 like older code for compatibility.
-                return 0
-        except:
-            return 0
-
-    @staticmethod
-    def getPiI2CBusNumber():
-        # Gets the I2C bus number /dev/i2c#
-        return 1 if Adafruit_I2C.getPiRevision() > 1 else 0
-
-    def __init__(self, address, busnum=-1, debug=False):
+    def __init__(self, address, debug=False):
         self.address = address
-        # By default, the correct I2C bus is auto-detected using /proc/cpuinfo
-        # Alternatively, you can hard-code the bus version below:
-        # self.bus = smbus.SMBus(0); # Force I2C0 (early 256MB Pi's)
-        if ROBOT_HARDWARE == DeviceHardwareBrand.JETSON_NANO:
-            # Force I2C1 (512MB Pi's)
-            self.bus = smbus.SMBus(1)
-
-        elif ROBOT_HARDWARE in [DeviceHardwareBrand.RASPBERRY_PI, DeviceHardwareBrand.RASPBERRY_PI_64]:
-            self.bus = smbus.SMBus(busnum if busnum >= 0 else Adafruit_I2C.getPiI2CBusNumber())
-
-        else:
-            raise Exception("Undefined Hardware!")
-
+        self.bus = smbus.SMBus(1)
         self.debug = debug
 
     def reverseByteOrder(self, data):

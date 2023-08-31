@@ -13,12 +13,8 @@ from math import pi
 from std_msgs.msg import Header
 from duckietown_msgs.msg import WheelEncoderStamped, WheelsCmdStamped
 from wheel_encoder import WheelEncoderDriver, WheelDirection
-from duckietown.dtros import DTROS, TopicType, NodeType, DTParam, ParamType
 
-from hardware_test_wheel_encoder import HardwareTestWheelEncoder
-
-
-class WheelEncoderNode(DTROS):
+class WheelEncoderNode:
     """Node handling a single wheel encoder.
 
     This node is responsible for reading data off of a single wheel encoders.
@@ -39,20 +35,14 @@ class WheelEncoderNode(DTROS):
     """
 
     def __init__(self, node_name):
-        # Initialize the DTROS parent class
-        super(WheelEncoderNode, self).__init__(node_name=node_name, node_type=NodeType.DRIVER)
+        rospy.init_node(node_name)
         # get parameters
         self._veh = rospy.get_param("~veh")
         self._name = rospy.get_param("~name")
         self._gpio_pin = rospy.get_param("~gpio")
         self._resolution = rospy.get_param("~resolution")
         self._configuration = rospy.get_param("~configuration")
-        self._publish_frequency = DTParam(
-            "~publish_frequency", param_type=ParamType.FLOAT, min_value=1.0, max_value=100.0
-        )
-
-        # register a callback for when publish_frequency changes
-        self._publish_frequency.register_update_callback(self._frequency_change_cb)
+        self._publish_frequency = 1
 
         # try using custom calibration file
         calib_file = os.path.join(
@@ -97,7 +87,7 @@ class WheelEncoderNode(DTROS):
         self._tick = 0
         # publisher for wheel encoder ticks
         self._tick_pub = rospy.Publisher(
-            "~tick", WheelEncoderStamped, queue_size=1, dt_topic_type=TopicType.DRIVER
+            "~tick", WheelEncoderStamped, queue_size=1
         )
         # subscriber for the wheel command executed
         self.sub_wheels = rospy.Subscriber(
@@ -106,11 +96,9 @@ class WheelEncoderNode(DTROS):
         # tf broadcaster for wheel frame
         self._tf_broadcaster = TransformBroadcaster()
         # setup a timer
-        self._timer = rospy.Timer(rospy.Duration(1.0 / self._publish_frequency.value), self._cb_publish)
+        self._timer = rospy.Timer(rospy.Duration(1.0 / self._publish_frequency), self._cb_publish)
         # setup the driver
         self._driver = WheelEncoderDriver(self._gpio_pin, self._encoder_tick_cb)
-        # user hardware test
-        self._hardware_test = HardwareTestWheelEncoder(wheel_side=self._name)
 
     def _wheels_cmd_executed_cb(self, msg):
         if self._configuration == "left":
@@ -132,15 +120,6 @@ class WheelEncoderNode(DTROS):
                 tick_no (int): cumulative total number of ticks
         """
         self._tick = tick_no
-
-    def _frequency_change_cb(self):
-        """
-        Callback triggered when the publish frequency changes.
-        """
-        self._timer.shutdown()
-        frequency = self._publish_frequency.value
-        self._timer = rospy.Timer(rospy.Duration(1.0 / frequency), self._cb_publish)
-        self.loginfo(f"Publish frequency now set to {frequency}Hz")
 
     def _cb_publish(self, _):
         # Create header with timestamp
@@ -166,7 +145,6 @@ class WheelEncoderNode(DTROS):
                 transform=Transform(rotation=Quaternion(x=quat[0], y=quat[1], z=quat[2], w=quat[3])),
             )
         )
-
 
 if __name__ == "__main__":
     # Initialize the node with rospy

@@ -1,25 +1,11 @@
 #!/usr/bin/env python3
 
 from enum import IntEnum
-
-from dt_device_utils import get_device_hardware_brand, DeviceHardwareBrand
-
-ROBOT_HARDWARE = get_device_hardware_brand()
-
-if ROBOT_HARDWARE == DeviceHardwareBrand.JETSON_NANO:
-    import Jetson.GPIO as GPIO
-
-elif ROBOT_HARDWARE in [DeviceHardwareBrand.RASPBERRY_PI, DeviceHardwareBrand.RASPBERRY_PI_64]:
-    import RPi.GPIO as GPIO
-
-else:
-    raise Exception("Undefined Hardware!")
-
+import RPi.GPIO as GPIO
 
 class WheelDirection(IntEnum):
     FORWARD = 1
     REVERSE = -1
-
 
 class WheelEncoderDriver:
     """Class handling communication with a wheel encoder.

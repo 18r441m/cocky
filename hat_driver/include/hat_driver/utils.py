@@ -14,6 +14,5 @@ _DEFAULT_HAT = HATv1
 
 
 def from_env():
-    rcfg = get_robot_configuration()
     DTHAT = _DEFAULT_HAT
     return DTHAT

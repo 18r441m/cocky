@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(cocky_msgs)
+project(duckietown_msgs)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -7,20 +7,15 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   std_msgs
   geometry_msgs
-  visualization_msgs
   sensor_msgs
-  tf_conversions
-  tf
 )
 
 add_message_files(
+  FILES
   Twist2DStamped.msg
   WheelsCmd.msg
   WheelsCmdStamped.msg
   BoolStamped.msg
-)
-
-add_service_files(
 )
 
 generate_messages(
@@ -38,7 +33,6 @@ catkin_package(
    sensor_msgs
    std_msgs
    message_runtime
-   visualization_msgs
 )
 
 

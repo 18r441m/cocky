@@ -4,7 +4,7 @@ import rospy
 from cocky_msgs.msg import WheelsCmdStamped, BoolStamped
 from wheels_driver.dagu_wheels_driver import DaguWheelsDriver
 
-class WheelsDriverNode():
+class WheelsDriverNode:
     """Node handling the motor velocities communication.
 
     Subscribes to the requested wheels commands (linear velocities, i.e. velocity for the left
@@ -47,8 +47,6 @@ class WheelsDriverNode():
         # Subscribers
         self.sub_topic = rospy.Subscriber("~wheels_cmd", WheelsCmdStamped, self.wheels_cmd_cb, queue_size=1)
         self.sub_e_stop = rospy.Subscriber("~emergency_stop", BoolStamped, self.estop_cb, queue_size=1)
-
-        self.log("Initialized.")
 
     def wheels_cmd_cb(self, msg):
         """
