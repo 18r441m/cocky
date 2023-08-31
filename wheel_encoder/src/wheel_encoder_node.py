@@ -55,18 +55,18 @@ class WheelEncoderNode:
             custom_resolution = int(calib_data["resolution"])
             rospy.set_param("~resolution", custom_resolution)
             self._resolution = custom_resolution
-            self.loginfo(
+            print(
                 (
                     f"With calibration file - {calib_file}, "
                     f"use custom encoder resolution: {self._resolution}"
                 )
             )
         except FileNotFoundError:
-            self.logwarn(
+            print(
                 (f"No custom encoder calibration found at: {calib_file}. " "Using default parameters.")
             )
         except KeyError:
-            self.logwarn(
+            print(
                 (
                     "No valid field 'resolution' found in "
                     f"encoder calibration file at: {calib_file}. "
@@ -74,7 +74,7 @@ class WheelEncoderNode:
                 )
             )
         except ValueError:
-            self.logwarn(
+            print(
                 (
                     "No valid integer 'resolution' value found in "
                     f"encoder calibration file at: {calib_file}. "
