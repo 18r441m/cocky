@@ -15,6 +15,7 @@ add_message_files(
   Twist2DStamped.msg
   WheelsCmd.msg
   WheelsCmdStamped.msg
+  WheelEncoderStamped.msg
   BoolStamped.msg
 )
 
