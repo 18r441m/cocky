@@ -3,7 +3,7 @@ project(wheels_driver)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy
-  cocky_msgs
+  duckietown_msgs
   tf 
 )
 
