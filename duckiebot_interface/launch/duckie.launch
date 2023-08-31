@@ -20,9 +20,8 @@
             <arg name="veh" value="$(arg veh)"/>
         </include>
     </group>
-
+<!--
     <group>
-        <!-- Left Wheel Encoder  -->
         <remap from="left_wheel_encoder_node/wheels_cmd_executed"
                to="wheels_driver_node/wheels_cmd_executed"/>
         <include file="$(find wheel_encoder)/launch/wheel_encoder_node.launch">
@@ -31,7 +30,6 @@
             <arg name="param_file_name" value="left_wheel"/>
         </include>
 
-        <!-- Right Wheel Encoder  -->
         <remap from="right_wheel_encoder_node/wheels_cmd_executed"
                to="wheels_driver_node/wheels_cmd_executed"/>
         <include file="$(find wheel_encoder)/launch/wheel_encoder_node.launch">
@@ -39,5 +37,5 @@
             <arg name="wheel" value="right"/>
             <arg name="param_file_name" value="right_wheel"/>
         </include>
-    </group>
+    </group>-->
 </launch>
