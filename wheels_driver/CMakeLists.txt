@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-  CATKIN_DEPENDS rospy cocky_msgs tf 
+  CATKIN_DEPENDS rospy duckietown_msgs tf 
 )
 
 catkin_python_setup()
