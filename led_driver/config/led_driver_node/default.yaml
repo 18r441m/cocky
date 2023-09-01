@@ -1,9 +1,9 @@
 idle:
   color: [
     # white on the front, red on the back
-    [0, 0, 0], #front left
-    [1, 1, 1],
-    [0, 0, 0],
+    [0, 0, 0], # front left
+    [0, 0, 0], # back right
+    [1, 1, 1], # 
     [0, 0, 0],
     [0, 0, 0],
   ]
