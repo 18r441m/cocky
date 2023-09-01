@@ -17,6 +17,7 @@ add_message_files(
   WheelsCmdStamped.msg
   WheelEncoderStamped.msg
   BoolStamped.msg
+  LEDPattern.msg
 )
 
 generate_messages(
