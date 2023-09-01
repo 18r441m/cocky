@@ -99,6 +99,8 @@ class WheelsDriverNode:
 
 if __name__ == "__main__":
     # Initialize the node with rospy
-    node = WheelsDriverNode(node_name="wheels_driver_node")
+    node = WheelsDriverNode(node_name="wheels_driver_node")    
+    rospy.on_shutdown(node.on_shutdown())
     # Keep it spinning to keep the node alive
     rospy.spin()
+                
