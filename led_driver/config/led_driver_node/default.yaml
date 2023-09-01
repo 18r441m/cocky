@@ -4,8 +4,8 @@ idle:
     [0, 0, 0], # front left
     [0, 0, 0], # back right
     [0, 0, 0], # back left
+    [0, 0, 0], # front right
     [1, 1, 1], # 
-    [0, 0, 0],
   ]
   intensity: [
     1.0,
