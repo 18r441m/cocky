@@ -34,11 +34,11 @@ class EncoderNode:
 
         while not rospy.is_shutdown():
             left_msg = WheelTicks()
-            left_msg.wheel_name = 'left'
+            left_msg.name = 'left'
             left_msg.ticks = self.left_ticks
 
             right_msg = WheelTicks()
-            right_msg.wheel_name = 'right'
+            right_msg.name = 'right'
             right_msg.ticks = self.right_ticks
 
             self.left_pub.publish(left_msg)
