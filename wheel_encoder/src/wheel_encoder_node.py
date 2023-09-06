@@ -150,5 +150,6 @@ if __name__ == "__main__":
     # Initialize the node with rospy
     rand = str(uuid.uuid4())[:8]
     node = WheelEncoderNode("wheel_encoder_%s" % (rand,))
+    rospy.on_shutdown(node.on_shutdown)
     # Keep it spinning to keep the node alive
     rospy.spin()
