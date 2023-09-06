@@ -4,7 +4,7 @@
 
     <group ns="$(arg veh)">
         <node pkg="wheel_encoder" type="$(arg node_name).py"
-              name="$(arg wheel)_$(arg node_name)" output="screen" required="true">
+              name="$(arg node_name)" output="screen" required="true">
             <param name="veh" type="str" value="$(arg veh)"/>
         </node>
     </group>
