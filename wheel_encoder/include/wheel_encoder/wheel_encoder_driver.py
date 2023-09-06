@@ -30,7 +30,11 @@ class WheelEncoderDriver:
         self._gpio_pin = gpio_pin
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(gpio_pin, GPIO.IN)
-        GPIO.add_event_detect(gpio_pin, GPIO.RISING, callback=self._cb)
+        try:
+            GPIO.add_event_detect(gpio_pin, GPIO.RISING, callback=self._cb)
+        except RuntimeError:
+            GPIO.remove_event_detect(gpio_pin)
+            GPIO.add_event_detect(gpio_pin, GPIO.RISING, callback=self._cb)
         # ---
         self._callback = callback
         self._ticks = 0
@@ -49,3 +53,5 @@ class WheelEncoderDriver:
 
     def shutdown(self):
         GPIO.remove_event_detect(self._gpio_pin)
+        GPIO.cleanup(self._gpio_pin)
+
