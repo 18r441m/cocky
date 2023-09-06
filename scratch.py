@@ -1,4 +1,4 @@
- import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
 class DuckiebotDriver:
@@ -40,3 +40,5 @@ class DuckiebotDriver:
 
 if __name__ == "__main__":
     driver = DuckiebotDriver()
+    while True:
+        time.sleep(1)
