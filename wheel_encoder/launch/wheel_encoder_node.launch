@@ -4,7 +4,7 @@
 
     <group ns="$(arg veh)">
         <node pkg="wheel_encoder" type="$(arg node_name).py"
-              name="$(arg node_name)" output="screen" required="true" launch-prefix="echo 'yourpassword' | sudo -S">
+              name="$(arg node_name)" output="screen" required="true" launch-prefix="echo 'raspberry' | sudo -S">
             <param name="veh" type="str" value="$(arg veh)"/>
         </node>
     </group>
