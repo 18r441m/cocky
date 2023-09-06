@@ -4,8 +4,7 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=["wheel_encoder", "hardware_test_wheel_encoder"],
-    package_dir={"": "include"}
+    packages=["wheel_encoder"],
 )
 
 setup(**setup_args)

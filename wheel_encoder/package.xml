@@ -4,8 +4,8 @@
     <version>1.0.0</version>
     <description>A ROS interface to the wheel encoders</description>
 
-    <author email="afdaniele@ttic.edu">Andrea F. Daniele</author>
-    <maintainer email="afdaniele@ttic.edu">Andrea F. Daniele</maintainer>
+    <author email="ijsalman@email.sc.edu">Ibrahim Salman</author>
+    <maintainer email="ijsalman@email.sc.edu">Ibrahim Salman</maintainer>
     <license>GPLv3</license>
 
     <buildtool_depend>catkin</buildtool_depend>
