@@ -15,7 +15,7 @@ add_message_files(
   Twist2DStamped.msg
   WheelsCmd.msg
   WheelsCmdStamped.msg
-  WheelTicks.msg
+  WheelEncoderStamped.msg
   BoolStamped.msg
   LEDPattern.msg
 )
