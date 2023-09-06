@@ -59,7 +59,6 @@ class LEDDriverNode:
 
         At shutdown, changes the LED pattern to `LIGHT_OFF`.
         """
-    
         time.sleep(1)
 
 
