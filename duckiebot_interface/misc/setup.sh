@@ -32,6 +32,10 @@ check_apt_lock
 echo "Installing python3-pip..."
 sudo apt install python3-pip
 
+# Install pip packages from requirements.txt
+echo "Installing pip packages from requirements.txt..."
+pip3 install -r requirements.txt
+
 # Setup ROS repositories
 echo "Setting up ROS repositories..."
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
