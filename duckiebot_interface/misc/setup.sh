@@ -24,13 +24,13 @@ sudo apt upgrade -y
 echo "Checking for APT locks..."
 check_apt_lock
 echo "Installing curl, vim, and tmux..."
-sudo apt install curl vim tmux
+sudo apt install curl vim tmux -y
 
 # Install python pip
 echo "Checking for APT locks..."
 check_apt_lock
 echo "Installing python3-pip..."
-sudo apt install python3-pip
+sudo apt install python3-pip -y
 
 # Install pip packages from requirements.txt
 echo "Installing pip packages from requirements.txt..."
@@ -51,7 +51,7 @@ sudo apt update
 echo "Checking for APT locks..."
 check_apt_lock
 echo "Installing ROS Noetic Desktop Full..."
-sudo apt install ros-noetic-desktop-full
+sudo apt install ros-noetic-desktop-full -y
 
 # Source ROS setup.bash in bashrc
 echo "Sourcing ROS setup in bashrc..."
@@ -63,5 +63,4 @@ echo "Copying udev rules..."
 sudo cp 99-duckiebot.rules /etc/udev/rules.d/
 
 # Rebooting
-echo "Rebooting now..."
-sudo reboot
+echo "Make sure to reboot now using 'sudo reboot'"
