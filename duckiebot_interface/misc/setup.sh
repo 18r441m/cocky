@@ -55,8 +55,7 @@ sudo apt install ros-noetic-desktop-full -y
 
 # Source ROS setup.bash in bashrc
 echo "Sourcing ROS setup in bashrc..."
-echo "source /opt/ros/noetic/setup.bash" >> $HOME/.bashrc
-echo $HOME
+echo "source /opt/ros/noetic/setup.bash" >> /home/pi/.bashrc
 source ~/.bashrc
 
 # Copy udev rules
