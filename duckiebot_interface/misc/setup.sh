@@ -24,7 +24,7 @@ sudo apt upgrade -y
 echo "Checking for APT locks..."
 check_apt_lock
 echo "Installing curl, vim, and tmux..."
-sudo apt install curl vim tmux -y
+sudo apt install curl vim tmux xauth libx11-6 -y
 
 # Install python pip
 echo "Checking for APT locks..."
