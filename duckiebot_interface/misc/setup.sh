@@ -9,6 +9,9 @@ check_apt_lock() {
     done
 }
 
+# kill lock process
+sudo kill -9 $(sudo lsof -t /var/lib/dpkg/lock-frontend)
+
 # Update and Upgrade
 echo "Checking for APT locks..."
 check_apt_lock
